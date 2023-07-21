@@ -14,6 +14,7 @@ Before running this project, ensure you have the following prerequisites install
 
 - Node.js (>=14.x)
 - npm (Node Package Manager)
+- Socket.io (version YYY)
 
 ## Getting Started
 

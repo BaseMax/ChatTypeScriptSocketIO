@@ -1,15 +1,11 @@
 import mongoose from "mongoose";
 import { Socket, Server } from "socket.io";
 import { MessageService } from "./message.service";
-import { ChannelService } from "../channel/channel.service";
-import { io } from "../server";
-import { ChannelModel } from "../channel/channel.schema";
 import { OnlineUsers } from "../common/socket.online.user";
 import express, { Response } from "express";
 import { authenticateJWT } from "../common/authenticate.jwt";
 
 const messageService = new MessageService();
-const channelService = new ChannelService();
 const PrivateMessageRouter = express.Router();
 
 PrivateMessageRouter.get(

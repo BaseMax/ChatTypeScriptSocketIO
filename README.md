@@ -26,6 +26,7 @@ cd ChatTypeScriptSocketIO
 ```
 
 Install project dependencies:
+
 ```bash
 npm install
 ```
@@ -37,52 +38,49 @@ npm install
 To start the WebSocket server, run the following command:
 
 ```bash
-npm run start:server
+npm run start dev
 ```
 
 This will launch the server and bind it to a specified port (default is 8080). The server will be ready to accept WebSocket connections from clients.
 
-### Starting the WebSocket Client
-
-To start the WebSocket client, run the following command:
-
-```bash
-npm run start:client
-```
-
 The client will attempt to connect to the WebSocket server running on the specified host and port. You can adjust the server host and port in the `src/client.ts` file.
 
-## Chat Commands
+# join to socket.io
 
-Once the WebSocket client is running, you can use the following commands:
+![Image Alt Text](screenshots/addUser.png)
 
-- `/login <username>`: Log in with your desired username to join the chat.
-- `/direct <username> <message>`: Send a direct message to another user using their username.
-- `/group <group_name> <message>`: Send a message to a specific group of users.
-- `/join <channel_name>`: Join a public chat channel to send and receive messages.
-- `/leave <channel_name>`: Leave a public chat channel.
+# Private chat
 
-### Socket commands or maybe routes:
+## get private
 
- -`/api/login`: Handles user login. Expects a JSON payload with the username.
-- `/api/direct`: Sends a direct message. Expects a JSON payload with the recipient username and the message.
-- `/api/group`: Sends a message to a group. Expects a JSON payload with the group_name and the message.
-- `/api/channel/join`: Joins a public channel. Expects a JSON payload with the channel_name.
-- `/api/channel/leave`: Leaves a public channel. Expects a JSON payload with the channel_name.
-- `/api/channel/messages/:channel_name`: Retrieves the message history for a specific public channel.
-- `/api/user/:username/status`: Retrieves the status (online, offline, etc.) of a specific user.
-- `/api/user/:username/direct-messages`: Retrieves the direct message history between the logged-in user and another user (:username).
-- `/api/user/groups`: Retrieves a list of groups that the logged-in user belongs to.
+![Image Alt Text](screenshots/getPrivateChats.png)
 
-### Handling WebSocket Events
+## received private message
 
-Both the WebSocket server and client have event handlers for the following events:
+![Image Alt Text](screenshots/recivedPrivateMessage.png)
 
-- `open`: Triggered when the WebSocket connection is successfully established.
-- `message`: Triggered when a message is received from the other party.
-- `close`: Triggered when the WebSocket connection is closed.
+## update private message
 
-You can customize the behavior of these event handlers in the respective src/server.ts and src/client.ts files.
+![Image Alt Text](screenshots/updtePrivateMessage.png)
+
+## delete message in private chat
+
+![Image Alt Text](screenshots/deletMessageInPrivateChat.png)
+
+# Group
+
+![Image Alt Text](screenshots/creatGroup.png)
+![Image Alt Text](screenshots/groupMessage.png)
+
+# Channel
+
+![Image Alt Text](screenshots/adminSendMessageToChannel.png)
+![Image Alt Text](screenshots/deleteChannelMessage.png)
+![Image Alt Text](screenshots/editChannelMessage.png)
+![Image Alt Text](screenshots/getAllMessageInChannel.png)
+![Image Alt Text](screenshots/joinChannel.png)
+![Image Alt Text](screenshots/leaveChannel.png)
+![Image Alt Text](screenshots/usersSeeAdminMessages.png)
 
 ## Configuration
 

@@ -1,7 +1,10 @@
 import { ObjectId } from "mongodb";
 import { GroupModel, GroupMessageModel } from "./group.schema";
 import { GroupDocument } from "./interfaces/group.document";
-import { GroupMessageDocument } from "./interfaces/group.message.document";
+import {
+  GroupMessageDocument,
+  Relatives,
+} from "./interfaces/group.message.document";
 
 export class GroupService {
   async create(ownerId: string, name: string): Promise<GroupDocument> {
@@ -11,8 +14,6 @@ export class GroupService {
     });
   }
 
-
-
   async find(groupId: string): Promise<GroupDocument | null> {
     const channel = await GroupModel.findOne({
       _id: new ObjectId(groupId),
@@ -20,7 +21,6 @@ export class GroupService {
 
     return channel;
   }
-
 
   async joinGroup(
     groupId: string,
@@ -51,10 +51,6 @@ export class GroupService {
     );
   }
 
-
-
-
-
   async isMemberOf(groupId: string, userId: string): Promise<Boolean> {
     const group = await GroupModel.findOne({
       _id: new ObjectId(groupId),
@@ -63,7 +59,6 @@ export class GroupService {
 
     return group !== null ? true : false;
   }
-
 
   async addMessage(
     groupId: string,
@@ -85,6 +80,42 @@ export class GroupService {
   }
 
 
+  async getMessagesAfter(
+    groupId: string,
+    createdAt: Date,
+    limit: number
+  ): Promise<GroupMessageDocument[]> {
+    const afterMessages = await GroupMessageModel.find({
+      groupId: groupId,
+      createdAt: { $gt: createdAt },
+    })
+      .sort({ createdAt: 1 })
+      .limit(limit);
+
+    return afterMessages;
+  }
+
+  async getMessagesBefore(
+    groupId: string,
+    createdAt: Date,
+    limit: number
+  ): Promise<GroupMessageDocument[]> {
+    const beforeMessages = await GroupMessageModel.find({
+      groupId: new ObjectId(groupId),
+      createdAt: { $lt: createdAt },
+    })
+      .sort({ createdAt: -1 })
+      .limit(limit);
+
+    return beforeMessages.reverse();
+  }
+
+  async findMessageById(
+    messageId: string
+  ): Promise<GroupMessageDocument | null> {
+    return GroupMessageModel.findById(messageId);
+  }
+
   async editMessage(
     userId: string,
     messageId: string,
@@ -101,10 +132,6 @@ export class GroupService {
     );
   }
 
-
-
-
-
   async deleteMessage(
     userId: string,
     messageId: string
@@ -114,6 +141,4 @@ export class GroupService {
       senderId: new ObjectId(userId),
     });
   }
-
-
 }

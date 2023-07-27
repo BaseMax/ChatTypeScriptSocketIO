@@ -1,5 +1,5 @@
 export interface CreateMessage {
   readonly content: string;
-  readonly receiver: string;
+  readonly receiverId: string;
   readonly senderId: string;
 }

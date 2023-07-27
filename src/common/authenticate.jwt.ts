@@ -8,7 +8,6 @@ export const authenticateJWT = (
   next: NextFunction
 ) => {
   const token = req.headers.authorization;
-  console.log(token);
   
 
   const secretKey = process.env.SECRET_KEY as string;

@@ -7,7 +7,6 @@ import { OnlineUsers } from "../common/socket.online.user";
 const ChannelRouter = express.Router();
 const channelService = new ChannelService();
 
-
 ChannelRouter.post(
   "/create",
   authenticateJWT,
@@ -38,9 +37,40 @@ ChannelRouter.get(
     res.status(200).send(messages);
   }
 );
+ChannelRouter.get(
+  "/allMessagesAfterAndBefore/:messageId/:limit",
+  authenticateJWT,
+  async (req: any, res: Response) => {
+    const userId = req.user.sub;
+    const messageId = req.params.messageId;
+    const limit = +req.params.limit;
+    const specificMessage = await channelService.findMessageById(messageId);
+    const channelId = specificMessage?.channelId.toString() as string;
+    const isMember = await channelService.isMemberOf(channelId, userId);
 
+    if (!isMember) {
+      res.status(400).send("you aren't part of this channel :)");
+    }
 
+    const beforeMessagesQuery = channelService.getMessagesBefore(
+      channelId,
+      specificMessage?.createdAt as Date,
+      limit
+    );
+    const afterMessagesQuery = channelService.getMessagesAfter(
+      channelId,
+      specificMessage?.createdAt as Date,
+      limit
+    );
 
+    const [beforeMessages, afterMessages] = await Promise.all([
+      beforeMessagesQuery,
+      afterMessagesQuery,
+    ]);
+
+    res.status(200).send({ beforeMessages, afterMessages });
+  }
+);
 
 ChannelRouter.patch(
   "/message/edit/:messageId",

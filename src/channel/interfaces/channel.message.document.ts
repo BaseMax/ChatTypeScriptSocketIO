@@ -6,3 +6,4 @@ export interface ChannelMessageDocument extends Document {
   readonly channelId: ObjectId;
   readonly createdAt: Date;
 }
+

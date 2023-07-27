@@ -56,6 +56,43 @@ PrivateMessageRouter.delete(
   }
 );
 
+PrivateMessageRouter.get(
+  "/allMessagesAfterAndBefore/:messageId/:limit",
+  authenticateJWT,
+  async (req: any, res: Response) => {
+    const userId = req.user.sub;
+    const messageId = req.params.messageId;
+    const limit = +req.params.limit;
+    const specificMessage = await messageService.findMessageById(messageId);
+    const receiverId = specificMessage?.receiverId.toString() as string;
+    const user2Id =
+      receiverId === userId
+        ? (specificMessage?.senderId.toString() as string)
+        : receiverId;
+
+
+    const beforeMessagesQuery = messageService.getMessagesBefore(
+      userId,
+      user2Id,
+      specificMessage?.createdAt as Date,
+      limit
+    );
+    const afterMessagesQuery = messageService.getMessagesAfter(
+      userId,
+      user2Id,
+      specificMessage?.createdAt as Date,
+      limit
+    );
+
+    const [beforeMessages, afterMessages] = await Promise.all([
+      beforeMessagesQuery,
+      afterMessagesQuery,
+    ]);
+
+    res.status(200).send({ beforeMessages, afterMessages });
+  }
+);
+
 export function stablishPrivateMessageSocket(
   socket: Socket,
   io: Server,
@@ -69,7 +106,7 @@ export function stablishPrivateMessageSocket(
       socket.to(user).emit("privateMessage", { content, from: socket.id });
     }
 
-    await messageService.insert({ senderId, content, receiver: userId });
+    await messageService.insert({ senderId, content, receiverId: userId });
   });
 }
 

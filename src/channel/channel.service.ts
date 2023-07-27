@@ -67,6 +67,42 @@ export class ChannelService {
     });
   }
 
+  async findMessageById(
+    messageId: string
+  ): Promise<ChannelMessageDocument | null> {
+    return ChannelMessageModel.findById(messageId);
+  }
+
+  async getMessagesAfter(
+    channelId: string,
+    createdAt: Date,
+    limit: number
+  ): Promise<ChannelMessageDocument[]> {
+    const afterMessages = await ChannelMessageModel.find({
+      channelId: new ObjectId(channelId),
+      createdAt: { $gt: createdAt },
+    })
+      .sort({ createdAt: 1 })
+      .limit(limit);
+
+    return afterMessages;
+  }
+
+  async getMessagesBefore(
+    channelId: string,
+    createdAt: Date,
+    limit: number
+  ): Promise<ChannelMessageDocument[]> {
+    const beforeMessages = await ChannelMessageModel.find({
+      channelId: new ObjectId(channelId),
+      createdAt: { $lt: createdAt },
+    })
+      .sort({ createdAt: -1 })
+      .limit(limit);
+
+    return beforeMessages.reverse();
+  }
+
   async deleteMessage(
     userId: string,
     messageId: string

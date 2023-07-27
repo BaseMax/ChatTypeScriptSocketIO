@@ -6,3 +6,8 @@ export interface GroupMessageDocument extends Document {
   readonly groupId: ObjectId;
   readonly createdAt: Date;
 }
+
+export interface Relatives {
+  beforeMessages: GroupMessageDocument[];
+  afterMessages: GroupMessageDocument[];
+}

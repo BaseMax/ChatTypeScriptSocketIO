@@ -3,6 +3,7 @@ import { authenticateJWT } from "../common/authenticate.jwt";
 import { GroupService } from "./group.service";
 import { Server, Socket } from "socket.io";
 import { OnlineUsers } from "../common/socket.online.user";
+import { ObjectId } from "mongodb";
 
 const GroupRouter = express.Router();
 const groupService = new GroupService();
@@ -34,6 +35,42 @@ GroupRouter.get(
 
     const messages = await groupService.getAllMessages(groupId);
     res.status(200).send(messages);
+  }
+);
+
+GroupRouter.get(
+  "/allMessagesAfterAndBefore/:messageId/:limit",
+  authenticateJWT,
+  async (req: any, res: Response) => {
+    const userId = req.user.sub;
+    const messageId = req.params.messageId;
+    const limit = +req.params.limit;
+
+    const specificMessage = await groupService.findMessageById(messageId);
+    const groupId = specificMessage?.groupId.toString() as string;
+    const isMember = await groupService.isMemberOf(groupId, userId);
+
+    if (!isMember) {
+      res.status(400).send("you aren't part of this group :)");
+    }
+
+    const beforeMessagesQuery = groupService.getMessagesBefore(
+      groupId,
+      specificMessage?.createdAt as Date,
+      limit
+    );
+    const afterMessagesQuery = groupService.getMessagesAfter(
+      groupId ,
+      specificMessage?.createdAt as Date,
+      limit
+    );
+
+    const [beforeMessages, afterMessages] = await Promise.all([
+      beforeMessagesQuery,
+      afterMessagesQuery,
+    ]);
+
+    res.status(200).send({ beforeMessages, afterMessages });
   }
 );
 

@@ -1,0 +1,371 @@
+{
+	"info": {
+		"_postman_id": "55116236-9774-4fb3-919c-5453ec19eb6a",
+		"name": "chatApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17431671"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"test@gmail.com\",\n    \"password\":\"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create channel",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGJjZjlmMDk3NWE4M2Y2NzA0NGJlNjMiLCJpYXQiOjE2OTAyNzM4MDksImV4cCI6MTY5MDM2MDIwOX0.5jPu2aLKmNlb0_26cSdjjDdCh-qLv4gHYgHbLI9spmw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"science\"\n}\n\nhi to all . i can send message because I'm Owner of this channel :)\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/channel/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"channel",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"john\",\n    \"email\":\"test@gmail.com\",\n    \"password\":\"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/auth/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get private messages chat",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGJjZjlmMDk3NWE4M2Y2NzA0NGJlNjMiLCJpYXQiOjE2OTAzNTI0NjUsImV4cCI6MTY5MDQzODg2NX0.QvSxvx7mciIUnrjPYeajp0RCZYVDjj0XE03XQAoluHE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/private/allMessages/64bcf9f0975a83f67044be62",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"private",
+						"allMessages",
+						"64bcf9f0975a83f67044be62"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit a message in private chat",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGJjZjlmMDk3NWE4M2Y2NzA0NGJlNjMiLCJpYXQiOjE2OTAzNTI0NjUsImV4cCI6MTY5MDQzODg2NX0.QvSxvx7mciIUnrjPYeajp0RCZYVDjj0XE03XQAoluHE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"newContent\":\"hi how are doing?  (i had typo ,i updated it)\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/private/edit/64c0c4e1389f400e519c196d",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"private",
+						"edit",
+						"64c0c4e1389f400e519c196d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit channel message",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGJjZjlmMDk3NWE4M2Y2NzA0NGJlNjMiLCJpYXQiOjE2OTAzNTI0NjUsImV4cCI6MTY5MDQzODg2NX0.QvSxvx7mciIUnrjPYeajp0RCZYVDjj0XE03XQAoluHE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"newContent\":\"hi to everyone (it is edited version)\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/channel/message/edit/64c0da4c6457b6b5df430135",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"channel",
+						"message",
+						"edit",
+						"64c0da4c6457b6b5df430135"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete channel message",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGJjZjlmMDk3NWE4M2Y2NzA0NGJlNjMiLCJpYXQiOjE2OTAzNTI0NjUsImV4cCI6MTY5MDQzODg2NX0.QvSxvx7mciIUnrjPYeajp0RCZYVDjj0XE03XQAoluHE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/channel/message/64c0dac56457b6b5df43013f",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"channel",
+						"message",
+						"64c0dac56457b6b5df43013f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all messages in channel",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGJjZjlmMDk3NWE4M2Y2NzA0NGJlNjMiLCJpYXQiOjE2OTAzNTI0NjUsImV4cCI6MTY5MDQzODg2NX0.QvSxvx7mciIUnrjPYeajp0RCZYVDjj0XE03XQAoluHE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/channel/allMessages/64c0d8c40283a2ad1c5bdd3c",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"channel",
+						"allMessages",
+						"64c0d8c40283a2ad1c5bdd3c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create group",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGJjZjlmMDk3NWE4M2Y2NzA0NGJlNjMiLCJpYXQiOjE2OTAzNTI0NjUsImV4cCI6MTY5MDQzODg2NX0.QvSxvx7mciIUnrjPYeajp0RCZYVDjj0XE03XQAoluHE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" :\"science\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/group/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"group",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all messages in group",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGJjZjlmMDk3NWE4M2Y2NzA0NGJlNjMiLCJpYXQiOjE2OTA0MzQzNzUsImV4cCI6MTY5MDUyMDc3NX0.AeymOL_SCO0G9sJQtxpmrD16FWMdEslI1-88iljwmSI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/group/allMessages/64c0ec1274cc811f717d10cc",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"group",
+						"allMessages",
+						"64c0ec1274cc811f717d10cc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit message in group",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGJjZjlmMDk3NWE4M2Y2NzA0NGJlNjMiLCJpYXQiOjE2OTA0MzQzNzUsImV4cCI6MTY5MDUyMDc3NX0.AeymOL_SCO0G9sJQtxpmrD16FWMdEslI1-88iljwmSI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"newContent\" :\"hey,it is update version of message\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/group/message/edit/64c1f3bfa6a25a5fdaaa36ec",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"group",
+						"message",
+						"edit",
+						"64c1f3bfa6a25a5fdaaa36ec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete message in group",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGJjZjlmMDk3NWE4M2Y2NzA0NGJlNjMiLCJpYXQiOjE2OTA0MzQzNzUsImV4cCI6MTY5MDUyMDc3NX0.AeymOL_SCO0G9sJQtxpmrD16FWMdEslI1-88iljwmSI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/group/messages/64c1f3bfa6a25a5fdaaa36ec",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"group",
+						"messages",
+						"64c1f3bfa6a25a5fdaaa36ec"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -51,15 +51,15 @@ The client will attempt to connect to the WebSocket server running on the specif
 
 # Private chat
 
-## get private
+## Get private
 
 ![Image Alt Text](screenshots/getPrivateChats.png)
 
-## received private message
+## Received private message
 
 ![Image Alt Text](screenshots/recivedPrivateMessage.png)
 
-## update private message
+## Update private message
 
 ![Image Alt Text](screenshots/updtePrivateMessage.png)
 

@@ -12,9 +12,9 @@ This is a real-time chat application built with TypeScript and Socket.io, allowi
 
 Before running this project, ensure you have the following prerequisites installed on your system:
 
-- Node.js (>=14.x)
-- npm (Node Package Manager)
-- Socket.io (version YYY)
+- Node.js (v18.13.0)
+- npm (Node Package Manager) "9.2.0"
+- Socket.io "^4.7.1"
 
 ## Getting Started
 

@@ -366,6 +366,113 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "get messages relative to a specific message in group",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGJjZjlmMDk3NWE4M2Y2NzA0NGJlNjMiLCJpYXQiOjE2OTA0MzQzNzUsImV4cCI6MTY5MDUyMDc3NX0.AeymOL_SCO0G9sJQtxpmrD16FWMdEslI1-88iljwmSI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/group/allMessagesAfterAndBefore/64c1f9f780bb840a28e601af/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"group",
+						"allMessagesAfterAndBefore",
+						"64c1f9f780bb840a28e601af",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get messages relative to a specific message in channel",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGJjZjlmMDk3NWE4M2Y2NzA0NGJlNjMiLCJpYXQiOjE2OTA0MzQzNzUsImV4cCI6MTY5MDUyMDc3NX0.AeymOL_SCO0G9sJQtxpmrD16FWMdEslI1-88iljwmSI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/channel/allMessagesAfterAndBefore/64c0da786457b6b5df43013a/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"channel",
+						"allMessagesAfterAndBefore",
+						"64c0da786457b6b5df43013a",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get messages relative to a specific message in private chat",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGJjZjlmMDk3NWE4M2Y2NzA0NGJlNjMiLCJpYXQiOjE2OTA0MzQzNzUsImV4cCI6MTY5MDUyMDc3NX0.AeymOL_SCO0G9sJQtxpmrD16FWMdEslI1-88iljwmSI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/private/allMessagesAfterAndBefore/64c24a3815c346bef7bec295/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"private",
+						"allMessagesAfterAndBefore",
+						"64c24a3815c346bef7bec295",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete message in private chat",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NGJjZjlmMDk3NWE4M2Y2NzA0NGJlNjMiLCJpYXQiOjE2OTA0MzQzNzUsImV4cCI6MTY5MDUyMDc3NX0.AeymOL_SCO0G9sJQtxpmrD16FWMdEslI1-88iljwmSI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/private/message/64c249e915c346bef7bec28d",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"private",
+						"message",
+						"64c249e915c346bef7bec28d"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

@@ -1,6 +1,5 @@
 import express from "express";
 const app = express();
-import { Request, Response } from "express";
 import http from "http";
 import { Server, Socket } from "socket.io";
 import mongoose from "mongoose";
@@ -17,6 +16,7 @@ import {
   stablishChannelSocket,
 } from "./channel/channel.controller";
 import { OnlineUsers } from "./common/socket.online.user";
+import { GroupRouter, stablishGroupSocket } from "./group/group.controller";
 dotenv.config();
 const server = http.createServer(app);
 export const io = new Server(server);
@@ -31,13 +31,14 @@ app.use(bodyParser.json());
 
 app.use("/auth", UserRouter);
 app.use("/channel", ChannelRouter);
-app.use("/private",PrivateMessageRouter)
-
+app.use("/group", GroupRouter);
+app.use("/private", PrivateMessageRouter);
 
 const onlineUsers = new OnlineUsers();
 io.on("connection", (socket: Socket) => {
   stablishPrivateMessageSocket(socket, io, onlineUsers);
   stablishChannelSocket(socket, io, onlineUsers);
+  stablishGroupSocket(socket, io, onlineUsers);
   console.log(socket.id);
 
   socket.on("addUser", (userId) => {

@@ -1,27 +1,27 @@
 import mongoose from "mongoose";
 
-const channelMessageSchema = new mongoose.Schema({
-  content: { type: String, required: true },
+const groupMessageSchema = new mongoose.Schema({
   senderId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
   },
-  channelId: {
+
+  groupId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Channel",
+    ref: "Group",
+    required: true,
+  },
+
+  content: {
+    type: String,
     required: true,
   },
 
   createdAt: { type: Date, default: Date.now },
 });
 
-export const ChannelMessageModel = mongoose.model(
-  "ChannelMessage",
-  channelMessageSchema
-);
-
-const channelSchema = new mongoose.Schema({
+const groupSchema = new mongoose.Schema({
   name: { type: String, required: true },
 
   ownerId: {
@@ -34,10 +34,18 @@ const channelSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+      required: true,
     },
   ],
-  createdAt: { type: Date, default: Date.now },
 
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-export const ChannelModel = mongoose.model("Channel", channelSchema);
+export const GroupModel = mongoose.model("Group", groupSchema);
+export const GroupMessageModel = mongoose.model(
+  "GroupMessage",
+  groupMessageSchema
+);

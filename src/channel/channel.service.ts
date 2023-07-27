@@ -19,7 +19,6 @@ export class ChannelService {
         ownerId: new ObjectId(ownerId),
       });
 
-      console.log(channel);
       return channel;
     } catch (error) {
       console.log(error);
@@ -108,7 +107,10 @@ export class ChannelService {
     });
   }
 
-  async isMemberOf(channelId: string, userId: string) {
+  async isMemberOf(
+    channelId: string,
+    userId: string
+  ): Promise<ChannelDocument | null> {
     return await ChannelModel.findOne({
       _id: new ObjectId(channelId),
       members: new ObjectId(userId),

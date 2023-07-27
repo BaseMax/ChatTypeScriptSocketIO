@@ -45,42 +45,49 @@ This will launch the server and bind it to a specified port (default is 8080). T
 
 The client will attempt to connect to the WebSocket server running on the specified host and port. You can adjust the server host and port in the `src/client.ts` file.
 
-# join to socket.io
+# Join to socket.io
 
-![Image Alt Text](screenshots/addUser.png)
+![websocket typescript socketio](screenshots/addUser.png)
 
 # Private chat
 
 ## Get private
 
-![Image Alt Text](screenshots/getPrivateChats.png)
+![websocket typescript](screenshots/getPrivateChats.png)
 
 ## Received private message
 
-![Image Alt Text](screenshots/recivedPrivateMessage.png)
+![websocket typescript](screenshots/recivedPrivateMessage.png)
 
 ## Update private message
 
-![Image Alt Text](screenshots/updtePrivateMessage.png)
+![websocket typescript](screenshots/updtePrivateMessage.png)
 
-## delete message in private chat
+## Delete message in private chat
 
-![Image Alt Text](screenshots/deletMessageInPrivateChat.png)
+![websocket typescript](screenshots/deletMessageInPrivateChat.png)
 
 # Group
 
-![Image Alt Text](screenshots/creatGroup.png)
-![Image Alt Text](screenshots/groupMessage.png)
+![websocket typescript group](screenshots/creatGroup.png)
+
+![websocket typescript group](screenshots/groupMessage.png)
 
 # Channel
 
-![Image Alt Text](screenshots/adminSendMessageToChannel.png)
-![Image Alt Text](screenshots/deleteChannelMessage.png)
-![Image Alt Text](screenshots/editChannelMessage.png)
-![Image Alt Text](screenshots/getAllMessageInChannel.png)
-![Image Alt Text](screenshots/joinChannel.png)
-![Image Alt Text](screenshots/leaveChannel.png)
-![Image Alt Text](screenshots/usersSeeAdminMessages.png)
+![websocket typescript channel](screenshots/adminSendMessageToChannel.png)
+
+![websocket typescript channel](screenshots/deleteChannelMessage.png)
+
+![websocket typescript channel](screenshots/editChannelMessage.png)
+
+![websocket typescript channel](screenshots/getAllMessageInChannel.png)
+
+![websocket typescript channel](screenshots/joinChannel.png)
+
+![websocket typescript channel](screenshots/leaveChannel.png)
+
+![websocket typescript channel](screenshots/usersSeeAdminMessages.png)
 
 ## Configuration
 

@@ -43,7 +43,7 @@ npm run start dev
 
 This will launch the server and bind it to a specified port (default is 8080). The server will be ready to accept WebSocket connections from clients.
 
-The client will attempt to connect to the WebSocket server running on the specified host and port. You can adjust the server host and port in the `src/client.ts` file.
+The client will attempt to connect to the WebSocket server running on the specified host and port. You can adjust the server host and port in the postman events .
 
 # Join to socket.io
 
